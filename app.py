@@ -45,12 +45,12 @@ if st.button('Recommend'):
             except KeyError:
                 st.write('Poster not found')
         with c2:
-            year = movie_i['year']
         
             st.write("###")
             st.write('Title:', title)
             
             try:
+                year = movie_i['year']
                 st.write(f'Year: {year}')
             except KeyError:
                 st.write('Year: not found')
