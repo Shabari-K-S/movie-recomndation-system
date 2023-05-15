@@ -15,14 +15,14 @@ name_movie = st.text_input('Enter a movie title:',placeholder='The Matrix')
 num = st.slider('Number of movies to recommend:', 1, 10, 5)
 
 if st.button('Recommend'):
+    st.write('---')
+    st.header('Recommended movies:')
     search = ia.search_movie(name_movie)
 
     if len(search) <num:
         st.info(f"Sorry, we have less recommendations found for {name_movie}.")
         num = len(search)
-
     for i in range(num):
-
         id = search[i].getID()
 
         # getting information
@@ -49,11 +49,13 @@ if st.button('Recommend'):
         
             st.write("###")
             st.write('Title:', title)
-            rating = movie_i['rating']
-        
-            st.write(f'Year: {year}')
-
+            
             try:
+                st.write(f'Year: {year}')
+            except KeyError:
+                st.write('Year: not found')
+            try:
+                rating = movie_i['rating']
                 st.write(f'Rating: {rating} :star:')
             except KeyError:
                 st.write('Rating: not found')
