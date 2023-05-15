@@ -2,6 +2,9 @@ import imdb
 import streamlit as st
 # creating instance of IMDb
 
+st.set_page_config(page_title='Movie Recommendation System', page_icon=':movie_camera:', layout='wide', initial_sidebar_state='auto')
+
+
 ia = imdb.IMDb()
 
 st.title('Movie Recommendation System')
