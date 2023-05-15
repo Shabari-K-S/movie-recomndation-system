@@ -52,8 +52,11 @@ if st.button('Recommend'):
             rating = movie_i['rating']
         
             st.write(f'Year: {year}')
-            st.write(f'Rating: {rating} :star:')
 
+            try:
+                st.write(f'Rating: {rating} :star:')
+            except KeyError:
+                st.write('Rating: not found')
             try:
                 directors = movie_i['directors']
                 director = ','.join(map(str, directors))
