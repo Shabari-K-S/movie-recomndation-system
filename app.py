@@ -4,7 +4,6 @@ import streamlit as st
 
 st.set_page_config(page_title='Movie Recommendation System', page_icon=':movie_camera:', layout='wide', initial_sidebar_state='auto')
 
-
 ia = imdb.IMDb()
 
 st.title('Movie Recommendation System')
@@ -37,16 +36,14 @@ if st.button('Recommend'):
         st.write("###")
         st.subheader(f"{i+1} - {title}")
         st.write("###")
-
-
         # getting movie poster
-
-        poster = movie_i['full-size cover url']
-        
         c1, c2 = st.columns([1, 4])
         with c1:
-            st.image(poster)
-
+            try:
+                poster = movie_i['full-size cover url']
+                st.image(poster)
+            except KeyError:
+                st.write('Poster not found')
         with c2:
             year = movie_i['year']
         
